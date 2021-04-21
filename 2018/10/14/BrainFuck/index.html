@@ -1,31 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
-    
-
-    
-
-    
-
-
-
+    <!-- so meta -->
     <meta charset="utf-8">
-    
-    
-    
-    
-    <title>中科大CTF2018 加密算法和解密算法 WP | Cirn09 | 逆向苦手</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="虚拟机,BrainFuck,CTF,Write Up,WP">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="BrainFuck虚拟机翻译优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中科大CTF2018 加密算法和解密算法 WP">
 <meta property="og:url" content="https://cirn09.github.io/2018/10/14/BrainFuck/index.html">
-<meta property="og:site_name" content="Cirn09">
+<meta property="og:site_name" content="古明地板">
 <meta property="og:description" content="BrainFuck虚拟机翻译优化">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-10-14T05:41:39.000Z">
@@ -38,155 +23,150 @@
 <meta property="article:tag" content="WP">
 <meta name="twitter:card" content="summary">
     
-        <link rel="alternate" type="application/atom+xml" title="Cirn09" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+        
+      
     
+    <!-- title -->
+    <title>中科大CTF2018 加密算法和解密算法 WP</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Cirn09</h5>
-          <a href="mailto:Cirn09@outlook.com" title="Cirn09@outlook.com" class="mail">Cirn09@outlook.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/cirn09" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/cirn09" target="_blank" rel="noopener">Projects</a></li>
         
       </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2021/01/11/rwctf2021wp/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2017/12/06/WeChatControl/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://cirn09.github.io/2018/10/14/BrainFuck/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://cirn09.github.io/2018/10/14/BrainFuck/&text=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://cirn09.github.io/2018/10/14/BrainFuck/&is_video=false&description=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=中科大CTF2018 加密算法和解密算法 WP&body=Check out this article: https://cirn09.github.io/2018/10/14/BrainFuck/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://cirn09.github.io/2018/10/14/BrainFuck/&name=中科大CTF2018 加密算法和解密算法 WP&description=&lt;p&gt;BrainFuck虚拟机翻译优化&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://cirn09.github.io/2018/10/14/BrainFuck/&t=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">中科大CTF2018 加密算法和解密算法 WP</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#加密流程"><span class="toc-number">1.1.</span> <span class="toc-text">加密流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BrainFuck-简介"><span class="toc-number">2.</span> <span class="toc-text">BrainFuck 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#翻译BrainFuck"><span class="toc-number">3.</span> <span class="toc-text">翻译BrainFuck</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解一次线性同余方程组"><span class="toc-number">4.</span> <span class="toc-text">解一次线性同余方程组</span></a></li></ol>
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">中科大CTF2018 加密算法和解密算法 WP</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2018-10-14T05:41:39.000Z" itemprop="datePublished" class="page-time">
-  2018-10-14
-</time>
-
-
-            
-        </h5>
-    </div>
+  </span>
+</div>
 
     
-
-
-</header>
-
-
-<div class="container body-wrap">
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#加密流程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">加密流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#BrainFuck-简介"><span class="post-toc-number">2.</span> <span class="post-toc-text">BrainFuck 简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#翻译BrainFuck"><span class="post-toc-number">3.</span> <span class="post-toc-text">翻译BrainFuck</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解一次线性同余方程组"><span class="post-toc-number">4.</span> <span class="post-toc-text">解一次线性同余方程组</span></a></li></ol>
-        </nav>
-    </aside>
+    <h1 class="posttitle" itemprop="name headline">
+        中科大CTF2018 加密算法和解密算法 WP
+    </h1>
 
 
-<article id="post-BrainFuck"
-  class="post-article article-type-post fade" itemprop="blogPost">
 
-    <div class="post-card">
-        <h1 class="post-card-title">中科大CTF2018 加密算法和解密算法 WP</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2018-10-14 13:41:39" datetime="2018-10-14T05:41:39.000Z"  itemprop="datePublished">2018-10-14</time>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Cirn09</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-10-14T05:41:39.000Z" itemprop="datePublished">2018-10-14</time>
+        
+        (Updated: <time datetime="2018-10-16T06:11:09.938Z" itemprop="dateModified">2018-10-16</time>)
+        
+      
+    </div>
 
-            
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/BrainFuck/" rel="tag">BrainFuck</a>, <a class="tag-link" href="/tags/CTF/" rel="tag">CTF</a>, <a class="tag-link" href="/tags/WP/" rel="tag">WP</a>, <a class="tag-link" href="/tags/Write-Up/" rel="tag">Write Up</a>, <a class="tag-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a>
+    </div>
 
 
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+    </div>
+  </header>
+  
 
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>BrainFuck虚拟机翻译优化</p>
+  <div class="content" itemprop="articleBody">
+    <p>BrainFuck虚拟机翻译优化</p>
 <a id="more"></a>
 <p>近日参加了中科大的CTF，中科大出的题都非常有趣，大概是我玩得最开心的一次比赛了（要是会做的题多点能更开心。）<br>BrainFuck代码优化的这题本身难度不大，但第一次做这样的虚拟机翻译优化的题目</p>
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
@@ -207,6 +187,7 @@
 </blockquote>
 <p>加密的主体在于BrainFuck代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">,[-&gt;&gt;+++++++&gt;&gt;+++++&gt;&gt;+++&gt;&gt;++&gt;&gt;++++&gt;++++++&lt;&lt;+++&lt;&lt;+++++++++&lt;&lt;++++++++&lt;&lt;</span><br><span class="line">++++++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;+++++&gt;&gt;+++++++++&gt;&gt;+++++++++&gt;&gt;++&gt;&gt;++++&lt;+++++++++&lt;&lt;++++&lt;&lt;++++&lt;&lt;++&lt;&lt;++&lt;]&lt;,[-&gt;&gt;++</span><br><span class="line">+++&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;+++++++&gt;&gt;+++++++&gt;++++++&lt;&lt;++++++&lt;&lt;++++++++&lt;&lt;+++&lt;&lt;+++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;++++++++&gt;</span><br><span class="line">&gt;+++&gt;&gt;+++++++&gt;&gt;++++&gt;&gt;+++++++++&lt;++++++&lt;&lt;+++++++++&lt;&lt;++&lt;&lt;+++++++++&lt;&lt;++++++++&lt;]&lt;,[-&gt;&gt;++++++++&gt;&gt;+++++++&gt;&gt;</span><br><span class="line">++&gt;&gt;++&gt;&gt;+++++++++&gt;+++&lt;&lt;++++&lt;&lt;+++&lt;&lt;+++++&lt;&lt;++++++++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;++++&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;++++++&gt;&gt;++</span><br><span class="line">+++&lt;++++&lt;&lt;+++++++++&lt;&lt;++++++++&lt;&lt;+++++++&lt;&lt;++++&lt;]&lt;,[-&gt;&gt;+++++&gt;&gt;+++++++++&gt;&gt;+++&gt;&gt;++++&gt;&gt;++++&gt;+++&lt;&lt;++++++++&lt;</span><br><span class="line">&lt;++++++&lt;&lt;+++++&lt;&lt;++++++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;++++++&gt;&gt;++++++&gt;&gt;+++++&gt;&gt;++++++++&gt;&gt;+++++++&lt;++++++++&lt;&lt;++++++&lt;&lt;++</span><br><span class="line">+++&lt;&lt;+++&lt;&lt;+++++++&lt;]&lt;,[-&gt;&gt;+++++++&gt;&gt;++++&gt;&gt;++++&gt;&gt;+++&gt;&gt;+++++++&gt;+++++++&lt;&lt;+++++++++&lt;&lt;+++++&lt;&lt;+++++&lt;&lt;+++++++</span><br><span class="line">&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;+++&gt;&gt;++++&gt;&gt;++++&gt;&gt;+++++&gt;&gt;++++++&lt;++++&lt;&lt;+++&lt;&lt;++++++++&lt;&lt;+++++++&lt;&lt;+++++&lt;]&lt;,[-&gt;&gt;+++++&gt;&gt;++</span><br><span class="line">&gt;&gt;++++&gt;&gt;+++&gt;&gt;++++++&gt;++&lt;&lt;+++++++&lt;&lt;++++&lt;&lt;+++++++++&lt;&lt;+++++++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;++&gt;&gt;+++++++++&gt;&gt;+++++&gt;&gt;++++</span><br><span class="line">++++&gt;&gt;+++++++++&lt;+++++++&lt;&lt;++&lt;&lt;++++&lt;&lt;+++&lt;&lt;++&lt;]&lt;,[-&gt;&gt;++++++&gt;&gt;+++++++&gt;&gt;+++&gt;&gt;++++++&gt;&gt;++++++++&gt;++&lt;&lt;++++&lt;&lt;+</span><br><span class="line">++&lt;&lt;++++++++&lt;&lt;++++++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;++++++&gt;&gt;++&gt;&gt;+++++++++&gt;&gt;++++&gt;&gt;++++++&lt;+++++&lt;&lt;++++&lt;&lt;++++++++&lt;&lt;++++</span><br><span class="line">&lt;&lt;+++++++&lt;]&lt;,[-&gt;&gt;+++++++++&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;+++++++&gt;&gt;+++++++++&gt;++&lt;&lt;++++++++&lt;&lt;+++++&lt;&lt;+++++&lt;&lt;+++&lt;&lt;++</span><br><span class="line">++++++&lt;]&gt;[-&gt;&gt;+++++++++&gt;&gt;+++++++&gt;&gt;+++++++++&gt;&gt;++++&gt;&gt;++&lt;+++++++&lt;&lt;+++++++++&lt;&lt;++&lt;&lt;+++&lt;&lt;++++++++&lt;]&lt;,[-&gt;&gt;++</span><br><span class="line">&gt;&gt;++++++++&gt;&gt;++&gt;&gt;++++++&gt;&gt;+++++&gt;++++&lt;&lt;++++&lt;&lt;+++++++&lt;&lt;+++++++&lt;&lt;++++++++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;+++++++&gt;&gt;++&gt;&gt;++</span><br><span class="line">++++++&gt;&gt;+++++++&gt;&gt;++++&lt;++&lt;&lt;+++&lt;&lt;+++++++&lt;&lt;+++++&lt;&lt;++&lt;]&lt;,[-&gt;&gt;+++++++++&gt;&gt;+++++++&gt;&gt;+++++&gt;&gt;++++&gt;&gt;++&gt;+++++&lt;&lt;</span><br><span class="line">+++++&lt;&lt;++&lt;&lt;++&lt;&lt;+++++&lt;&lt;++++++++&lt;]&gt;[-&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;++&gt;&gt;+++++&gt;&gt;+++++++++&lt;++++++++&lt;&lt;++++++++&lt;&lt;++++</span><br><span class="line">&lt;&lt;++++&lt;&lt;+++++++++&lt;]&gt;++.&gt;++++++.&gt;++++++++.&gt;++++++++.&gt;+++.&gt;+++++.&gt;+++++.&gt;+++++++.&gt;++++.&gt;+++++++++.</span><br></pre></td></tr></table></figure>
+
 <h1 id="BrainFuck-简介"><a href="#BrainFuck-简介" class="headerlink" title="BrainFuck 简介"></a>BrainFuck 简介</h1><p>众所周知的，BrainFuck作为一门图灵完备的语言，总共有八个操作符，这八个操作符执行的操作和与C语言对应关系如下：</p>
 <table>
 <thead>
@@ -249,24 +230,26 @@
 <tr>
 <td align="center"><code>[</code></td>
 <td align="center">如果指向单元为零，则跳转到下一个<code>]</code></td>
-<td align="center"><code>while (*ptr) &#123;</code></td>
+<td align="center"><code>while (*ptr) {</code></td>
 </tr>
 <tr>
 <td align="center"><code>]</code></td>
 <td align="center">如果指向单元不为零，跳转到上一<code>[</code></td>
-<td align="center"><code>&#125;</code></td>
+<td align="center"><code>}</code></td>
 </tr>
 </tbody></table>
-<h1 id="翻译BrainFuck"><a href="#翻译BrainFuck" class="headerlink" title="翻译BrainFuck"></a>翻译BrainFuck</h1><p>可以看到，BrainFuck的判断和跳转由<code>[]</code>指令实现，一对<code>[]</code>可以翻译为<code>while (*ptr) &#123;&#125;</code>，所以我们先将代码整理成以[]为单位</p>
+<h1 id="翻译BrainFuck"><a href="#翻译BrainFuck" class="headerlink" title="翻译BrainFuck"></a>翻译BrainFuck</h1><p>可以看到，BrainFuck的判断和跳转由<code>[]</code>指令实现，一对<code>[]</code>可以翻译为<code>while (*ptr) {}</code>，所以我们先将代码整理成以[]为单位</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">,</span><br><span class="line">[-&gt;&gt;+++++++&gt;&gt;+++++&gt;&gt;+++&gt;&gt;++&gt;&gt;++++&gt;++++++&lt;&lt;+++&lt;&lt;+++++++++&lt;&lt;++++++++&lt;&lt;++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;+++++&gt;&gt;+++++++++&gt;&gt;+++++++++&gt;&gt;++&gt;&gt;++++&lt;+++++++++&lt;&lt;++++&lt;&lt;++++&lt;&lt;++&lt;&lt;++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;+++++&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;+++++++&gt;&gt;+++++++&gt;++++++&lt;&lt;++++++&lt;&lt;++++++++&lt;&lt;+++&lt;&lt;+++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;++++++++&gt;&gt;+++&gt;&gt;+++++++&gt;&gt;++++&gt;&gt;+++++++++&lt;++++++&lt;&lt;+++++++++&lt;&lt;++&lt;&lt;+++++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;++++++++&gt;&gt;+++++++&gt;&gt;++&gt;&gt;++&gt;&gt;+++++++++&gt;+++&lt;&lt;++++&lt;&lt;+++&lt;&lt;+++++&lt;&lt;++++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;++++&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;++++++&gt;&gt;+++++&lt;++++&lt;&lt;+++++++++&lt;&lt;++++++++&lt;&lt;+++++++&lt;&lt;++++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;+++++&gt;&gt;+++++++++&gt;&gt;+++&gt;&gt;++++&gt;&gt;++++&gt;+++&lt;&lt;++++++++&lt;&lt;++++++&lt;&lt;+++++&lt;&lt;++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;++++++&gt;&gt;++++++&gt;&gt;+++++&gt;&gt;++++++++&gt;&gt;+++++++&lt;++++++++&lt;&lt;++++++&lt;&lt;+++++&lt;&lt;+++&lt;&lt;+++++++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;+++++++&gt;&gt;++++&gt;&gt;++++&gt;&gt;+++&gt;&gt;+++++++&gt;+++++++&lt;&lt;+++++++++&lt;&lt;+++++&lt;&lt;+++++&lt;&lt;+++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;+++&gt;&gt;++++&gt;&gt;++++&gt;&gt;+++++&gt;&gt;++++++&lt;++++&lt;&lt;+++&lt;&lt;++++++++&lt;&lt;+++++++&lt;&lt;+++++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;+++++&gt;&gt;++&gt;&gt;++++&gt;&gt;+++&gt;&gt;++++++&gt;++&lt;&lt;+++++++&lt;&lt;++++&lt;&lt;+++++++++&lt;&lt;+++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;++&gt;&gt;+++++++++&gt;&gt;+++++&gt;&gt;++++++++&gt;&gt;+++++++++&lt;+++++++&lt;&lt;++&lt;&lt;++++&lt;&lt;+++&lt;&lt;++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;++++++&gt;&gt;+++++++&gt;&gt;+++&gt;&gt;++++++&gt;&gt;++++++++&gt;++&lt;&lt;++++&lt;&lt;+++&lt;&lt;++++++++&lt;&lt;++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;++++++&gt;&gt;++&gt;&gt;+++++++++&gt;&gt;++++&gt;&gt;++++++&lt;+++++&lt;&lt;++++&lt;&lt;++++++++&lt;&lt;++++&lt;&lt;+++++++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;+++++++++&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;+++++++&gt;&gt;+++++++++&gt;++&lt;&lt;++++++++&lt;&lt;+++++&lt;&lt;+++++&lt;&lt;+++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;+++++++++&gt;&gt;+++++++&gt;&gt;+++++++++&gt;&gt;++++&gt;&gt;++&lt;+++++++&lt;&lt;+++++++++&lt;&lt;++&lt;&lt;+++&lt;&lt;++++++++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;++&gt;&gt;++++++++&gt;&gt;++&gt;&gt;++++++&gt;&gt;+++++&gt;++++&lt;&lt;++++&lt;&lt;+++++++&lt;&lt;+++++++&lt;&lt;++++++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;+++++++&gt;&gt;++&gt;&gt;++++++++&gt;&gt;+++++++&gt;&gt;++++&lt;++&lt;&lt;+++&lt;&lt;+++++++&lt;&lt;+++++&lt;&lt;++&lt;]</span><br><span class="line">&lt;,</span><br><span class="line">[-&gt;&gt;+++++++++&gt;&gt;+++++++&gt;&gt;+++++&gt;&gt;++++&gt;&gt;++&gt;+++++&lt;&lt;+++++&lt;&lt;++&lt;&lt;++&lt;&lt;+++++&lt;&lt;++++++++&lt;]</span><br><span class="line">&gt;</span><br><span class="line">[-&gt;&gt;++++++++&gt;&gt;++++++&gt;&gt;++&gt;&gt;+++++&gt;&gt;+++++++++&lt;++++++++&lt;&lt;++++++++&lt;&lt;++++&lt;&lt;++++&lt;&lt;+++++++++&lt;]</span><br><span class="line">&gt;++.&gt;++++++.&gt;++++++++.&gt;++++++++.&gt;+++.&gt;+++++.&gt;+++++.&gt;+++++++.&gt;++++.&gt;+++++++++.</span><br></pre></td></tr></table></figure>
 <p>然后可以对每个循环块简要分析。首先要确定每个循环块每次循环的判断依据，这题简单就简单在每个循环块中指针自增和指针自减的数量是相同的，也就是说循环次数只由一个变量决定，而且每次循环都是对相同的单元进行相同的操作。<br>既然如此，那我们翻译代码的难度大大降低了。写一个脚本进行第一次翻译，将所有的指针增减操作简化掉：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">ptr = <span class="number">0</span></span><br><span class="line">p = <span class="number">0</span></span><br><span class="line">code = <span class="string">&#x27;balabala&#x27;</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"></span><br><span class="line">w = <span class="keyword">lambda</span> x: f.write(x + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="comment"># w = print</span></span><br><span class="line"><span class="keyword">while</span> p &lt; <span class="built_in">len</span>(code):</span><br><span class="line">    <span class="keyword">if</span> code[p] == <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">        w(<span class="string">&#x27;put(ptr[&#123;&#125;]);&#x27;</span>.<span class="built_in">format</span>(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">&#x27;,&#x27;</span>:</span><br><span class="line">        w(<span class="string">&#x27;ptr[&#123;&#125;] = get();&#x27;</span>.<span class="built_in">format</span>(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">&#x27;&lt;&#x27;</span>:</span><br><span class="line">        ptr -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">&#x27;&gt;&#x27;</span>:</span><br><span class="line">        ptr += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">        w(<span class="string">&#x27;ptr[&#123;&#125;] += 1;&#x27;</span>.<span class="built_in">format</span>(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">        w(<span class="string">&#x27;ptr[&#123;&#125;] -= 1;&#x27;</span>.<span class="built_in">format</span>(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">&#x27;[&#x27;</span>:</span><br><span class="line">        w(<span class="string">&#x27;while (ptr[&#123;&#125;]) &#123;&#123;&#x27;</span>.<span class="built_in">format</span>(ptr))</span><br><span class="line">        op = &#123;&#125;</span><br><span class="line">        <span class="keyword">while</span> code[p] != <span class="string">&#x27;]&#x27;</span>:</span><br><span class="line">            x = code[p]</span><br><span class="line">            <span class="keyword">if</span> x == <span class="string">&#x27;&gt;&#x27;</span>:</span><br><span class="line">                ptr += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> x == <span class="string">&#x27;&lt;&#x27;</span>:</span><br><span class="line">                ptr -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> x == <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">                <span class="keyword">if</span> op.get(ptr) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    op[ptr] = <span class="number">0</span></span><br><span class="line">                op[ptr] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> x == <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">                <span class="keyword">if</span> op.get(ptr) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    op[ptr] = <span class="number">0</span></span><br><span class="line">                op[ptr] -= <span class="number">1</span></span><br><span class="line">            p += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">sorted</span>(op.keys()):</span><br><span class="line">            <span class="keyword">if</span> op[x] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">elif</span> op[x] &gt; <span class="number">0</span>:</span><br><span class="line">                w(<span class="string">&#x27;ptr[&#123;&#125;] += &#123;&#125;;&#x27;</span>.<span class="built_in">format</span>(x, op[x]))</span><br><span class="line">            <span class="keyword">elif</span> op[x] &lt; <span class="number">0</span>:</span><br><span class="line">                w(<span class="string">&#x27;ptr[&#123;&#125;] -= &#123;&#125;;&#x27;</span>.<span class="built_in">format</span>(x, -op[x]))</span><br><span class="line">        w(<span class="string">&#x27;&#125;&#x27;</span>)</span><br><span class="line">    p += <span class="number">1</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">ptr = <span class="number">0</span></span><br><span class="line">p = <span class="number">0</span></span><br><span class="line">code = <span class="string">'balabala'</span></span><br><span class="line">f = open(<span class="string">'a'</span>, <span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">w = <span class="keyword">lambda</span> x: f.write(x + <span class="string">'\n'</span>)</span><br><span class="line"><span class="comment"># w = print</span></span><br><span class="line"><span class="keyword">while</span> p &lt; len(code):</span><br><span class="line">    <span class="keyword">if</span> code[p] == <span class="string">'.'</span>:</span><br><span class="line">        w(<span class="string">'put(ptr[&#123;&#125;]);'</span>.format(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">','</span>:</span><br><span class="line">        w(<span class="string">'ptr[&#123;&#125;] = get();'</span>.format(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">'&lt;'</span>:</span><br><span class="line">        ptr -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">'&gt;'</span>:</span><br><span class="line">        ptr += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">'+'</span>:</span><br><span class="line">        w(<span class="string">'ptr[&#123;&#125;] += 1;'</span>.format(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">'-'</span>:</span><br><span class="line">        w(<span class="string">'ptr[&#123;&#125;] -= 1;'</span>.format(ptr))</span><br><span class="line">    <span class="keyword">elif</span> code[p] == <span class="string">'['</span>:</span><br><span class="line">        w(<span class="string">'while (ptr[&#123;&#125;]) &#123;&#123;'</span>.format(ptr))</span><br><span class="line">        op = &#123;&#125;</span><br><span class="line">        <span class="keyword">while</span> code[p] != <span class="string">']'</span>:</span><br><span class="line">            x = code[p]</span><br><span class="line">            <span class="keyword">if</span> x == <span class="string">'&gt;'</span>:</span><br><span class="line">                ptr += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> x == <span class="string">'&lt;'</span>:</span><br><span class="line">                ptr -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> x == <span class="string">'+'</span>:</span><br><span class="line">                <span class="keyword">if</span> op.get(ptr) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    op[ptr] = <span class="number">0</span></span><br><span class="line">                op[ptr] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> x == <span class="string">'-'</span>:</span><br><span class="line">                <span class="keyword">if</span> op.get(ptr) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    op[ptr] = <span class="number">0</span></span><br><span class="line">                op[ptr] -= <span class="number">1</span></span><br><span class="line">            p += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> sorted(op.keys()):</span><br><span class="line">            <span class="keyword">if</span> op[x] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">elif</span> op[x] &gt; <span class="number">0</span>:</span><br><span class="line">                w(<span class="string">'ptr[&#123;&#125;] += &#123;&#125;;'</span>.format(x, op[x]))</span><br><span class="line">            <span class="keyword">elif</span> op[x] &lt; <span class="number">0</span>:</span><br><span class="line">                w(<span class="string">'ptr[&#123;&#125;] -= &#123;&#125;;'</span>.format(x, -op[x]))</span><br><span class="line">        w(<span class="string">'&#125;'</span>)</span><br><span class="line">    p += <span class="number">1</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
 <p>输出结果如下(有删减)：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">ptr[<span class="number">0</span>] = get();</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">0</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">0</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">1</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">1</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line">ptr[<span class="number">0</span>] = get();</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">0</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">0</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">1</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">1</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">2</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line">ptr[<span class="number">0</span>] = get();</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">0</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">0</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">1</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">1</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 略</span></span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line">put(ptr[<span class="number">2</span>]);</span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line">put(ptr[<span class="number">3</span>]);</span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line">put(ptr[<span class="number">11</span>]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">ptr[<span class="number">0</span>] = <span class="built_in">get</span>();</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">0</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">0</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">1</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">1</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line">ptr[<span class="number">0</span>] = <span class="built_in">get</span>();</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">0</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">0</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">1</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">1</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">2</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line">ptr[<span class="number">0</span>] = <span class="built_in">get</span>();</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">0</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">0</span>] -= <span class="number">1</span>;</span><br><span class="line">	ptr[<span class="number">1</span>] += <span class="number">8</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (ptr[<span class="number">1</span>]) &#123;</span><br><span class="line">	ptr[<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// balabala</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 略</span></span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line"><span class="built_in">put</span>(ptr[<span class="number">2</span>]);</span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line"><span class="built_in">put</span>(ptr[<span class="number">3</span>]);</span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line"><span class="comment">// balabala</span></span><br><span class="line"><span class="built_in">put</span>(ptr[<span class="number">11</span>]);</span><br></pre></td></tr></table></figure>
+
 <p>代码的思路很q夸克，首先接受输入保存在ptr[0]，之后第一块循环块就以ptr[0]作为循环停止的判断依据，每次循环将ptr[0]减1，并对其他变量进行简单的加减法；之后第二个循环块以ptr[1]作为判断依据，每次循环也会将ptr[1]减1。两次循环块结束后再次接受输入、重复上述操作，重复10次后又对ptr[2:12]进行了一些简单的加减，然后依次输出ptr[2:12]。<br>分析后我们发现，循环块一的循环次数是完全由输入决定的，循环块二的循环次数由循环块一决定，且两个循环快进行的都是简单的加减运算，那么我们就可以将循环块一、二合并并展开，即将其整理为<code>ptr[x] = a*input</code>的形式。进一步的,我们可以将所有的循环块以及循环块外的操作合并，整理为<code>ptr[x] = a0*input[0] + a1*input[1] + ... + a9*input[9] + b</code>的形式。ptr[0] ptr[1]作为循环的临时变量抛弃掉，最后我们整理得到如下代码（转换代码略）：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ptr[<span class="number">0</span>] = <span class="number">23</span>*input[<span class="number">0</span>] + <span class="number">69</span>*input[<span class="number">1</span>] + <span class="number">40</span>*input[<span class="number">2</span>] + <span class="number">61</span>*input[<span class="number">3</span>] + <span class="number">47</span>*input[<span class="number">4</span>] + <span class="number">21</span>*input[<span class="number">5</span>] + <span class="number">62</span>*input[<span class="number">6</span>] + <span class="number">73</span>*input[<span class="number">7</span>] + <span class="number">18</span>*input[<span class="number">8</span>] + <span class="number">81</span>*input[<span class="number">9</span>] + <span class="number">2</span>;</span><br><span class="line"><span class="comment">// balabala</span></span><br></pre></td></tr></table></figure>
 <p>考虑到附件中对算法的补充，我们对算法进行最后调整，得到：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">out[<span class="number">0</span>] = (<span class="number">23</span>*in[<span class="number">0</span>] + <span class="number">69</span>*in[<span class="number">1</span>] + <span class="number">40</span>*in[<span class="number">2</span>] + <span class="number">61</span>*in[<span class="number">3</span>] + <span class="number">47</span>*in[<span class="number">4</span>] + <span class="number">21</span>*in[<span class="number">5</span>] + <span class="number">62</span>*in[<span class="number">6</span>] + <span class="number">73</span>*in[<span class="number">7</span>] + <span class="number">18</span>*in[<span class="number">8</span>] + <span class="number">81</span>*in[<span class="number">9</span>] + <span class="number">2</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">1</span>] = (<span class="number">46</span>*in[<span class="number">0</span>] + <span class="number">67</span>*in[<span class="number">1</span>] + <span class="number">40</span>*in[<span class="number">2</span>] + <span class="number">54</span>*in[<span class="number">3</span>] + <span class="number">31</span>*in[<span class="number">4</span>] + <span class="number">23</span>*in[<span class="number">5</span>] + <span class="number">54</span>*in[<span class="number">6</span>] + <span class="number">75</span>*in[<span class="number">7</span>] + <span class="number">64</span>*in[<span class="number">8</span>] + <span class="number">69</span>*in[<span class="number">9</span>] + <span class="number">6</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">2</span>] = (<span class="number">21</span>*in[<span class="number">0</span>] + <span class="number">80</span>*in[<span class="number">1</span>] + <span class="number">63</span>*in[<span class="number">2</span>] + <span class="number">33</span>*in[<span class="number">3</span>] + <span class="number">60</span>*in[<span class="number">4</span>] + <span class="number">26</span>*in[<span class="number">5</span>] + <span class="number">39</span>*in[<span class="number">6</span>] + <span class="number">32</span>*in[<span class="number">7</span>] + <span class="number">48</span>*in[<span class="number">8</span>] + <span class="number">39</span>*in[<span class="number">9</span>] + <span class="number">8</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">3</span>] = (<span class="number">80</span>*in[<span class="number">0</span>] + <span class="number">27</span>*in[<span class="number">1</span>] + <span class="number">69</span>*in[<span class="number">2</span>] + <span class="number">53</span>*in[<span class="number">3</span>] + <span class="number">37</span>*in[<span class="number">4</span>] + <span class="number">81</span>*in[<span class="number">5</span>] + <span class="number">24</span>*in[<span class="number">6</span>] + <span class="number">61</span>*in[<span class="number">7</span>] + <span class="number">23</span>*in[<span class="number">8</span>] + <span class="number">50</span>*in[<span class="number">9</span>] + <span class="number">8</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">4</span>] = (<span class="number">35</span>*in[<span class="number">0</span>] + <span class="number">22</span>*in[<span class="number">1</span>] + <span class="number">66</span>*in[<span class="number">2</span>] + <span class="number">43</span>*in[<span class="number">3</span>] + <span class="number">68</span>*in[<span class="number">4</span>] + <span class="number">36</span>*in[<span class="number">5</span>] + <span class="number">67</span>*in[<span class="number">6</span>] + <span class="number">22</span>*in[<span class="number">7</span>] + <span class="number">58</span>*in[<span class="number">8</span>] + <span class="number">37</span>*in[<span class="number">9</span>] + <span class="number">3</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">5</span>] = (<span class="number">81</span>*in[<span class="number">0</span>] + <span class="number">64</span>*in[<span class="number">1</span>] + <span class="number">51</span>*in[<span class="number">2</span>] + <span class="number">46</span>*in[<span class="number">3</span>] + <span class="number">37</span>*in[<span class="number">4</span>] + <span class="number">44</span>*in[<span class="number">5</span>] + <span class="number">75</span>*in[<span class="number">6</span>] + <span class="number">77</span>*in[<span class="number">7</span>] + <span class="number">71</span>*in[<span class="number">8</span>] + <span class="number">18</span>*in[<span class="number">9</span>] + <span class="number">5</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">6</span>] = (<span class="number">34</span>*in[<span class="number">0</span>] + <span class="number">79</span>*in[<span class="number">1</span>] + <span class="number">74</span>*in[<span class="number">2</span>] + <span class="number">52</span>*in[<span class="number">3</span>] + <span class="number">27</span>*in[<span class="number">4</span>] + <span class="number">19</span>*in[<span class="number">5</span>] + <span class="number">38</span>*in[<span class="number">6</span>] + <span class="number">79</span>*in[<span class="number">7</span>] + <span class="number">30</span>*in[<span class="number">8</span>] + <span class="number">68</span>*in[<span class="number">9</span>] + <span class="number">5</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">7</span>] = (<span class="number">19</span>*in[<span class="number">0</span>] + <span class="number">38</span>*in[<span class="number">1</span>] + <span class="number">52</span>*in[<span class="number">2</span>] + <span class="number">72</span>*in[<span class="number">3</span>] + <span class="number">49</span>*in[<span class="number">4</span>] + <span class="number">71</span>*in[<span class="number">5</span>] + <span class="number">36</span>*in[<span class="number">6</span>] + <span class="number">40</span>*in[<span class="number">7</span>] + <span class="number">60</span>*in[<span class="number">8</span>] + <span class="number">45</span>*in[<span class="number">9</span>] + <span class="number">7</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">8</span>] = (<span class="number">76</span>*in[<span class="number">0</span>] + <span class="number">55</span>*in[<span class="number">1</span>] + <span class="number">41</span>*in[<span class="number">2</span>] + <span class="number">68</span>*in[<span class="number">3</span>] + <span class="number">39</span>*in[<span class="number">4</span>] + <span class="number">62</span>*in[<span class="number">5</span>] + <span class="number">48</span>*in[<span class="number">6</span>] + <span class="number">65</span>*in[<span class="number">7</span>] + <span class="number">21</span>*in[<span class="number">8</span>] + <span class="number">66</span>*in[<span class="number">9</span>] + <span class="number">4</span>) % <span class="number">64</span>;</span><br><span class="line">out[<span class="number">9</span>] = (<span class="number">38</span>*in[<span class="number">0</span>] + <span class="number">78</span>*in[<span class="number">1</span>] + <span class="number">43</span>*in[<span class="number">2</span>] + <span class="number">59</span>*in[<span class="number">3</span>] + <span class="number">55</span>*in[<span class="number">4</span>] + <span class="number">74</span>*in[<span class="number">5</span>] + <span class="number">50</span>*in[<span class="number">6</span>] + <span class="number">18</span>*in[<span class="number">7</span>] + <span class="number">36</span>*in[<span class="number">8</span>] + <span class="number">77</span>*in[<span class="number">9</span>] + <span class="number">9</span>) % <span class="number">64</span>;</span><br></pre></td></tr></table></figure>
+
 <h1 id="解一次线性同余方程组"><a href="#解一次线性同余方程组" class="headerlink" title="解一次线性同余方程组"></a>解一次线性同余方程组</h1><p>out已知，in未知，这样我们就得到了带模运算的十元一次方程组。额，这就触及到知识盲区了.png，尝试使用神器z3，居然也绝妙的被卡死了。。。<br>查阅资料这被称为一次线性同余方程组，解法参考<a href="http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&dbname=CMFD2012&filename=1011302041.nh&uid=WEEvREcwSlJHSldRa1FhdXNXa0d1REU3Rzh0aW1DdHJNcnJBT0tBRHF5TT0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&v=MjcxNzZXcjNKVkYyNkg3QzRITkhJcnBFYlBJUjhlWDFMdXhZUzdEaDFUM3FUcldNMUZyQ1VSTEtlWitkckZ5L20=" target="_blank" rel="noopener">链接</a>。<br>看完之后发现里面提供的解法都有一定条件限制，我们得到的方程组哪种解法都不满足。<br>然后又找到<a href="https://github.com/55-AA/mod_equations" target="_blank" rel="noopener">这个</a>，不得不说线性代数正是个强大的工具。</p>
 <p>最后将附件中提供的密文<code>JzRVPiVpqo4iDM8celyueIs4ff4DKeG3EMKihzuH</code>转换为四组已知数，解四组方程然后经转换即得到明文。最后要注意的是题目用的是这套Base64标准</p>
 <blockquote>
@@ -294,286 +277,140 @@ Value Encoding  Value Encoding  Value Encoding  Value Encoding
 <hr>
 <p>看完大佬的WP才知道这是希尔密码，果然还是我太菜了。<br>看完官方WP我都不好意思发之篇文章了（虽然发了也没人看。。</p>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2018-10-16T06:11:09.938Z" itemprop="dateUpdated">2018-10-16 14:11:09</time>
-</span><br>
-
-
-        
-        转载请注明出处
-        
-    </div>
-    
-    <footer>
-        <a href="https://Cirn09.github.io">
-            <img src="/img/avatar.jpg" alt="Cirn09">
-            Cirn09
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BrainFuck/" rel="tag">BrainFuck</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WP/" rel="tag">WP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Write-Up/" rel="tag">Write Up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=《中科大CTF2018 加密算法和解密算法 WP》 — Cirn09&pic=https://Cirn09.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=《中科大CTF2018 加密算法和解密算法 WP》 — Cirn09&source=BrainFuck虚拟机翻译优化" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cirn09.github.io/2018/10/14/BrainFuck/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《中科大CTF2018 加密算法和解密算法 WP》 — Cirn09&url=https://cirn09.github.io/2018/10/14/BrainFuck/&via=https://Cirn09.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://cirn09.github.io/2018/10/14/BrainFuck/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2021/01/11/rwctf2021wp/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">RealWorld2021 Write Up: Personal Proxy</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/12/06/WeChatControl/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">对控制PC端微信发送信息的研究</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 </article>
 
 
 
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/cirn09" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#加密流程"><span class="toc-number">1.1.</span> <span class="toc-text">加密流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BrainFuck-简介"><span class="toc-number">2.</span> <span class="toc-text">BrainFuck 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#翻译BrainFuck"><span class="toc-number">3.</span> <span class="toc-text">翻译BrainFuck</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解一次线性同余方程组"><span class="toc-number">4.</span> <span class="toc-text">解一次线性同余方程组</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://cirn09.github.io/2018/10/14/BrainFuck/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://cirn09.github.io/2018/10/14/BrainFuck/&text=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://cirn09.github.io/2018/10/14/BrainFuck/&is_video=false&description=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=中科大CTF2018 加密算法和解密算法 WP&body=Check out this article: https://cirn09.github.io/2018/10/14/BrainFuck/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://cirn09.github.io/2018/10/14/BrainFuck/&name=中科大CTF2018 加密算法和解密算法 WP&description=&lt;p&gt;BrainFuck虚拟机翻译优化&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://cirn09.github.io/2018/10/14/BrainFuck/&t=中科大CTF2018 加密算法和解密算法 WP" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-        <footer class="footer">
-    <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Cirn09 &copy; 2017 - 2021</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2021
+    Cirn09
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/cirn09" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
 </footer>
 
-  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
-    }
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
   </script>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
+<script src="/js/main.js"></script>
 
+<!-- search -->
 
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=《中科大CTF2018 加密算法和解密算法 WP》 — Cirn09&pic=https://Cirn09.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cirn09.github.io/2018/10/14/BrainFuck/&title=《中科大CTF2018 加密算法和解密算法 WP》 — Cirn09&source=BrainFuck虚拟机翻译优化" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cirn09.github.io/2018/10/14/BrainFuck/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《中科大CTF2018 加密算法和解密算法 WP》 — Cirn09&url=https://cirn09.github.io/2018/10/14/BrainFuck/&via=https://Cirn09.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://cirn09.github.io/2018/10/14/BrainFuck/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
+<!-- Google Analytics -->
 
+<!-- Baidu Analytics -->
 
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://cirn09.github.io/2018/10/14/BrainFuck/" alt="微信分享二维码">
-</div>
+<!-- Cloudflare Analytics -->
 
+<!-- Umami Analytics -->
 
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
-
-
-</script>
-
-<script src="/js/main.min.js?v=1.7.2"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="/js/search.min.js?v=1.7.2" async></script>
-
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
+<!-- Disqus Comments -->
 
 
 </body>
