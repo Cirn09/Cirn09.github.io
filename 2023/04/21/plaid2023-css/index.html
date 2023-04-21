@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="本质上是同一类问题参考： https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1mx411v7P4?t&#x3D;423.7&amp;p&#x3D;20https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;402823116https:&#x2F;&#x2F;oi-wiki.org&#x2F;math&#x2F;number-theory&#x2F;crt&#x2F; 令人大开眼界的爆破解法：https:&#x2F;&#x2F;gist.github.com&#x2F;SakiiR&#x2F;70">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup">
+<meta property="og:url" content="https://cirn09.github.io/2023/04/21/plaid2023-css/index.html">
+<meta property="og:site_name" content="古明地板">
+<meta property="og:description" content="本质上是同一类问题参考： https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1mx411v7P4?t&#x3D;423.7&amp;p&#x3D;20https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;402823116https:&#x2F;&#x2F;oi-wiki.org&#x2F;math&#x2F;number-theory&#x2F;crt&#x2F; 令人大开眼界的爆破解法：https:&#x2F;&#x2F;gist.github.com&#x2F;SakiiR&#x2F;70">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-21T12:38:40.000Z">
+<meta property="article:modified_time" content="2023-04-21T12:44:32.744Z">
+<meta property="article:author" content="Cirn09">
+<meta property="article:tag" content="re">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+        
+      
+    
+    <!-- title -->
+    <title>从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/cirn09" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2022/03/23/flag-checker/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://cirn09.github.io/2023/04/21/plaid2023-css/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&text=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&is_video=false&description=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup&body=Check out this article: https://cirn09.github.io/2023/04/21/plaid2023-css/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&name=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://cirn09.github.io/2023/04/21/plaid2023-css/&t=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Cirn09</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-04-21T12:38:40.000Z" itemprop="datePublished">2023-04-21</time>
+        
+        (Updated: <time datetime="2023-04-21T12:44:32.744Z" itemprop="dateModified">2023-04-21</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/re/" rel="tag">re</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>本质上是同一类问题<br>参考：</p>
+<p><a href="https://www.bilibili.com/video/BV1mx411v7P4?t=423.7&amp;p=20" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1mx411v7P4?t=423.7&amp;p=20</a><br><a href="https://zhuanlan.zhihu.com/p/402823116" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/402823116</a><br><a href="https://oi-wiki.org/math/number-theory/crt/" target="_blank" rel="noopener">https://oi-wiki.org/math/number-theory/crt/</a></p>
+<p>令人大开眼界的爆破解法：<br><a href="https://gist.github.com/SakiiR/700d2c5ca2eddb28123493498c584189" target="_blank" rel="noopener">https://gist.github.com/SakiiR/700d2c5ca2eddb28123493498c584189</a></p>
+<p>咕，有空再写</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/cirn09" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://cirn09.github.io/2023/04/21/plaid2023-css/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&text=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&is_video=false&description=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup&body=Check out this article: https://cirn09.github.io/2023/04/21/plaid2023-css/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&title=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://cirn09.github.io/2023/04/21/plaid2023-css/&name=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://cirn09.github.io/2023/04/21/plaid2023-css/&t=从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2023
+    Cirn09
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/cirn09" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

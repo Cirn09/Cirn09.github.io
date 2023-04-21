@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://Cirn09.github.io/"/>
-  <updated>2022-03-23T11:26:24.077Z</updated>
+  <updated>2023-04-21T12:44:32.744Z</updated>
   <id>https://Cirn09.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup</title>
+    <link href="https://Cirn09.github.io/2023/04/21/plaid2023-css/"/>
+    <id>https://Cirn09.github.io/2023/04/21/plaid2023-css/</id>
+    <published>2023-04-21T12:38:40.000Z</published>
+    <updated>2023-04-21T12:44:32.744Z</updated>
+    
+    <content type="html"><![CDATA[<p>本质上是同一类问题<br>参考：</p><p><a href="https://www.bilibili.com/video/BV1mx411v7P4?t=423.7&amp;p=20" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1mx411v7P4?t=423.7&amp;p=20</a><br><a href="https://zhuanlan.zhihu.com/p/402823116" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/402823116</a><br><a href="https://oi-wiki.org/math/number-theory/crt/" target="_blank" rel="noopener">https://oi-wiki.org/math/number-theory/crt/</a></p><p>令人大开眼界的爆破解法：<br><a href="https://gist.github.com/SakiiR/700d2c5ca2eddb28123493498c584189" target="_blank" rel="noopener">https://gist.github.com/SakiiR/700d2c5ca2eddb28123493498c584189</a></p><p>咕，有空再写</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本质上是同一类问题&lt;br&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1mx411v7P4?t=423.7&amp;amp;p=20&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www
+      
+    
+    </summary>
+    
+    
+      <category term="re" scheme="https://Cirn09.github.io/tags/re/"/>
+    
+  </entry>
   
   <entry>
     <title>zer0pts 2022 Flag-Checker Write Up</title>
@@ -171,13 +195,13 @@
     </summary>
     
     
-      <category term="虚拟机" scheme="https://Cirn09.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-      <category term="BrainFuck" scheme="https://Cirn09.github.io/tags/BrainFuck/"/>
-    
       <category term="CTF" scheme="https://Cirn09.github.io/tags/CTF/"/>
     
       <category term="Write Up" scheme="https://Cirn09.github.io/tags/Write-Up/"/>
+    
+      <category term="虚拟机" scheme="https://Cirn09.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+      <category term="BrainFuck" scheme="https://Cirn09.github.io/tags/BrainFuck/"/>
     
       <category term="WP" scheme="https://Cirn09.github.io/tags/WP/"/>
     
