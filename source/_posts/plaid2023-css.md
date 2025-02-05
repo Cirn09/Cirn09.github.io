@@ -3,7 +3,7 @@ title: 🔧 从《双星物语 2》雪山入口解谜到 Plaid CSS Writeup
 date: 2023-04-21 20:38:40
 tags:
 	- Write Up
-    - RE
+    - 逆向
     - WIP
 ---
 

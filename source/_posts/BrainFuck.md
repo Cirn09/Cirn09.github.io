@@ -3,6 +3,7 @@ title: 中科大CTF2018 加密算法和解密算法 WP
 date: 2018-10-14 13:41:39
 tags:
     - BrainFuck
+    - 逆向
     - Write Up
 ---
 
